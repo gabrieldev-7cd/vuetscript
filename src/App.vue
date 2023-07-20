@@ -1,6 +1,5 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Projeto VueTS para teste - pipeline Trigger [ Auto ]"/>
+  <h1>Projeto Athena Academy</h1>
 </template>
 
 <script lang="ts">
