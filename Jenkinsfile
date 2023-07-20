@@ -33,12 +33,13 @@ pipeline {
             }
         }
     }
-    
+
     post {
         always {
             script {
-                    sh "docker rmi gabriel7cd/vuetscript:${env.BUILD_ID}"
-                    sh "docker rmi gabriel7cd/vuetscript:latest"
+                    sh "docker rmi -f gabriel7cd/vuetscript:${env.BUILD_ID}"
+                    sh "docker rmi -f registry.hub.docker.com/gabriel7cd/vuetscript:${env.BUILD_ID}" 
+                    sh "docker rmi -f registry.hub.docker.com/gabriel7cd/vuetscript:latest"
             }
         }
     }
