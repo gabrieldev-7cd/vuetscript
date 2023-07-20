@@ -1,0 +1,54 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: athena-front
+  labels:
+    app: athena-front
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: athena-front
+  template:
+    metadata:
+      labels:
+        app: athena-front
+    spec:
+      containers:
+        - name: vuetscript
+          image: gabriel7cd/vuetscript:latest
+          ports:
+            - containerPort: 8081
+              name: port-front
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: athena-front-service
+spec:
+  selector:
+    app: athena-front
+  ports:
+    - protocol: TCP
+      port: 8081
+      targetPort: port-front
+  type: NodePort
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: athena-front-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+  - host: athena-academy.tech
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: athena-front-service
+            port:
+              number: 8081
