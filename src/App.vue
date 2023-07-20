@@ -1,5 +1,5 @@
 <template>
-  <h1>Projeto Athena Academy</h1>
+  <h1>Projeto Athena Academy Pipeline</h1>
 </template>
 
 <script lang="ts">
