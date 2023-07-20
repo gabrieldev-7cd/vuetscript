@@ -32,5 +32,14 @@ pipeline {
                 }
             }
         }
+
+        post {
+        always {
+            script {
+                    sh "docker rmi gabriel7cd/vuetscript:${env.BUILD_ID}"
+                    sh "docker rmi gabriel7cd/vuetscript:latest"
+            }
+        }
+    }
     }
 }

@@ -6,6 +6,8 @@ metadata:
     app: athena-front
 spec:
   replicas: 1
+  strategy:
+    type: Recreate
   selector:
     matchLabels:
       app: athena-front
