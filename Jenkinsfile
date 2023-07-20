@@ -29,6 +29,7 @@ pipeline {
                 withKubeConfig([credentialsId: 'kubeconfig']) {
                     sh 'sed -i "s/{{tag}}/$tag_version/g" ./deployment.yaml'
                     sh 'kubectl apply -f ./deployment.yaml'
+                    sh 'kubectl rollout restart deployment/athena-front'
                 }
             }
         }
